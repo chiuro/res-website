@@ -1,0 +1,38 @@
+.menuhome {margin-left:50px;margin-bottom:20px;}
+
+.down { font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px; padding: 5px;  }
+.down a:link { color:#f30;font-size: 12px; font-weight:bold; }
+.down a:visited { color:#000000;font-size: 12px; font-weight:bold; }
+.down a:hover { color:#000000;font-size: 12px; font-weight:bold; }
+
+.down div { margin: 5px;  }
+
+
+.menu { font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px; padding: 10px; color:#e4e4e4; }
+.menu a:link { font-size: 12px; font-weight:bold;color:white;text-decoration:none; }
+.menu a:visited { font-size: 12px; font-weight:bold;color:white;text-decoration:none; }
+.menu a:hover { font-size: 12px; font-weight:bold;color:white;text-decoration:underline; }
+
+
+.contenuti { font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px; padding: 5px;  }
+.contenuti h1 { font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 13px; font-weight:bold; color:#f30; padding: 5px;  }
+.contenuti { font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px; padding: 5px;  }
+.contenuti li.esterno {list-style-image:  url(img/p_rombo.gif);margin:10px 0px 0px 0px;list-style-position:outside}
+.contenuti li.interno {list-style: circle; margin:0px 0px 0px 0px;list-style-position:outside}
+.contenuti a:link { color:#f30; }
+.contenuti a:visited { color:#f30; }
+.contenuti a:hover { color:#000;text-decoration:none; }
+
+.sommario {color:#F30;font-weight:bold;margin:4px;padding: 4px;}
+.sommario a:link {color:#002D6B;font-weight:bold;margin:4px;padding: 4px;}
+.sommario a:visited {color:#333333;font-weight:bold;margin:4px;padding: 4px;}
+.sommario a:hover {color:#f30;font-weight:bold;margin:4px;padding: 4px;}
+.sommario li {list-style: square;color:#000000;list-style-position:outside}
+
+.box {color:#002D6B;font-weight:bold;border: 1px #f30 dotted;background-color: #f9f9f9;margin:4px;padding: 4px;}
+
+.box2 {color:#000000;border: 1px #002D6B dotted;background-color: #ffffff;margin:4px;padding: 4px;}
+.box2 h2 {font-size:12px;color:#f30;font-weight:bold;}
+
+.citazione {width:350px;color:#002D6B;border: 1px #002D6B solid;background-color: #ffffff;margin:4px;padding: 4px;}
+

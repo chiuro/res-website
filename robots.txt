@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Disallow: /other
+Sitemap: http://cooperativares.it/sitemap.xml.gz
