@@ -5,69 +5,315 @@
     <title>RES Società Cooperativa Sociale</title>
     <meta name="viewport" content="width=device-width, initial-scale=0.65">
     <link href="stile.css" rel="stylesheet" type="text/css">
-    <link href="stile.css" rel="stylesheet" type="text/css">
-    <meta content="Ricerca Educativa Servizio Società Cooperativa Sociale. CIRIE' via delle ginestre, 1. Servizi educativi a favore di persone disabili."
-      name="description">
+    <meta content="Ricerca Educativa Servizio Società Cooperativa Sociale. CIRIE' via delle ginestre, 1. Servizi educativi a favore di persone disabili." name="description">
     <meta content="coop torino canavese" name="keywords">
     <link rel="icon" href="/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <style>
+      :root {
+        --brown:     #5c4a32;
+        --brown-mid: #7a6245;
+        --gold:      #b89a6a;
+        --gold-light:#d4b896;
+        --cream:     #f5f0e8;
+        --cream-dark:#ede5d5;
+        --muted:     #9e8e7a;
+      }
+
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--cream);
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+      }
+
+      #splash::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(ellipse at 20% 30%, rgba(180,155,110,0.08) 0%, transparent 60%),
+          radial-gradient(ellipse at 80% 70%, rgba(92,74,50,0.06) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      #splash.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .splash-card {
+        position: relative;
+        z-index: 2;
+        width: min(580px, 92vw);
+        background: white;
+        border: 1px solid var(--cream-dark);
+        box-shadow: 0 4px 40px rgba(92,74,50,0.12), 0 1px 4px rgba(92,74,50,0.08);
+        animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+        font-family: 'Source Sans 3', sans-serif;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .card-topline {
+        height: 4px;
+        background: linear-gradient(90deg, var(--brown), var(--gold), var(--brown-mid));
+      }
+
+      .card-body {
+        padding: 44px 52px 36px;
+        box-sizing: border-box;
+      }
+
+      .card-logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 36px;
+      }
+
+      .card-logo-icon {
+        width: 44px;
+        height: 44px;
+        border: 1.5px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .card-logo-icon svg { width: 22px; height: 22px; }
+
+      .card-logo-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 15px;
+        color: var(--brown);
+        letter-spacing: 0.02em;
+        line-height: 1.3;
+      }
+
+      .card-logo-sub {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+
+      .s-divider {
+        width: 40px;
+        height: 1.5px;
+        background: var(--gold);
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--brown-mid);
+        background: var(--cream);
+        border: 1px solid var(--gold-light);
+        padding: 5px 12px;
+        margin-bottom: 24px;
+      }
+
+      .badge-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        animation: pulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,100% { opacity: 1; }
+        50%      { opacity: 0.3; }
+      }
+
+      .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(26px, 5vw, 34px);
+        line-height: 1.2;
+        color: var(--brown);
+        margin-bottom: 20px;
+      }
+
+      .card-text {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.85;
+        color: #6b5a47;
+        margin-bottom: 12px;
+      }
+
+      .card-text strong {
+        font-weight: 600;
+        color: var(--brown);
+      }
+
+      .card-btn {
+        width: 100%;
+        padding: 14px;
+        background: var(--brown);
+        color: var(--cream);
+        border: none;
+        font-family: 'Source Sans 3', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-top: 32px;
+        box-sizing: border-box;
+      }
+
+      .card-btn:hover { background: var(--brown-mid); }
+      .card-btn:active { transform: scale(0.99); }
+
+      .card-footer {
+        border-top: 1px solid var(--cream-dark);
+        padding: 14px 52px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer span {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        text-transform: uppercase;
+        font-family: 'Source Sans 3', sans-serif;
+      }
+    </style>
   </head>
-  <body leftmargin="0" topmargin="0" style="                    background-color: rgb(127, 211, 0);"
-    marginheight="0" marginwidth="0">
+  <body leftmargin="0" topmargin="0" style="background-color: rgb(127, 211, 0);" marginheight="0" marginwidth="0">
+
+    <!-- ══════════════════════ SPLASH ══════════════════════ -->
+    <div id="splash">
+      <div class="splash-card">
+
+        <div class="card-topline"></div>
+
+        <div class="card-body">
+
+          <div class="card-logo">
+            <div class="card-logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#b89a6a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-logo-name">RES Società Cooperativa Sociale</div>
+              <div class="card-logo-sub">Ricerca · Educativa · Servizi · Cirié (TO)</div>
+            </div>
+          </div>
+
+          <div class="s-divider"></div>
+
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Comunicazione ufficiale
+          </div>
+
+          <h1 class="card-title">Cooperativa<br/>in liquidazione</h1>
+
+          <p class="card-text">
+            La <strong>RES Società Cooperativa Sociale</strong> ha concluso la propria attività
+            ed è attualmente in fase di <strong>liquidazione volontaria</strong>.
+          </p>
+
+          <p class="card-text">
+            Questo sito è conservato come <strong>archivio storico</strong> delle attività
+            svolte negli anni a favore della comunità locale di Cirié e del territorio circostante.
+            I contenuti non sono più aggiornati e hanno valore esclusivamente documentale.
+          </p>
+
+          <button class="card-btn" onclick="enterSite()">
+            Entra nell'archivio storico
+          </button>
+
+        </div>
+
+        <div class="card-footer">
+          <span>C.F. / P.IVA 05845550010</span>
+          <span>© RES s.c.s. — Tutti i diritti riservati</span>
+        </div>
+
+      </div>
+    </div>
+    <!-- ════════════════════════════════════════════════════ -->
+
     <table class="top" border="0" cellpadding="0" cellspacing="0" width="100%">
       <tbody>
         <tr>
-          <td bgcolor="#ff7417"><img src="img/res-scs.gif" alt="RES Cooperativa Sociale. Ricerca Educativa Servizi, per la comunita'� locale"
-              height="70" border="0" width="580"></td>
+          <td bgcolor="#ff7417"><img src="img/res-scs.gif" alt="RES Cooperativa Sociale. Ricerca Educativa Servizi, per la comunita'&#xe0; locale" height="70" border="0" width="580"></td>
         </tr>
       </tbody>
     </table>
     <table class="centro" border="0" cellpadding="0" cellspacing="0" width="100%">
       <tbody>
         <tr>
-          <td bgcolor="#002d6b"><img src="img/menu_home.gif" alt="Impresa sociale, perche' organizza, genera, coltiva, produce, socialita'"
-              usemap="#Map" class="menuhome" height="255" border="0" width="588">
-          </td>
+          <td bgcolor="#002d6b"><img src="img/menu_home.gif" alt="Impresa sociale, perche' organizza, genera, coltiva, produce, socialita'" usemap="#Map" class="menuhome" height="255" border="0" width="588"></td>
         </tr>
       </tbody>
     </table>
     <map name="Map">
       <area shape="rect" coords="34,80,128,107" href="la-storia.htm" alt="la nostra storia">
-      <area shape="rect" coords="441,16,560,43" href="impresa-nel-territorio.htm"
-        alt="Impresa nel territorio">
-      <area shape="rect" coords="405,84,528,107" href="impresa-del-territorio.htm"
-        alt="Impresa del territorio: i progetti per il territorio">
-      <area shape="rect" coords="447,143,554,169" href="impresa-al-territorio.htm"
-        alt="Impresa al territorio: i servizi della cooperativa">
+      <area shape="rect" coords="441,16,560,43" href="impresa-nel-territorio.htm" alt="Impresa nel territorio">
+      <area shape="rect" coords="405,84,528,107" href="impresa-del-territorio.htm" alt="Impresa del territorio: i progetti per il territorio">
+      <area shape="rect" coords="447,143,554,169" href="impresa-al-territorio.htm" alt="Impresa al territorio: i servizi della cooperativa">
       <area shape="rect" coords="194,143,362,179" href="scelta-campo.htm" alt="i valori della cooperativa">
     </map>
-    <table itemscope="" itemtype="http://schema.org/Organization" class="down" border="0"
-      cellpadding="0" cellspacing="0" width="100%">
+    <table itemscope="" itemtype="http://schema.org/Organization" class="down" border="0" cellpadding="0" cellspacing="0" width="100%">
       <tbody>
         <tr>
           <td>
-            <div style="text-align: left;"><a href="tel:+393703114809">Tel. <span
-                  itemprop="telephone">370 3114809</span></a>&nbsp; -&nbsp;
+            <div style="text-align: left;"><a href="tel:+393703114809">Tel. <span itemprop="telephone">370 3114809</span></a>&nbsp; -&nbsp;
               e-mail: <a href="mailto:info@cooperativares.it"> <span itemprop="email">info@cooperativares.it</span></a><br>
               &nbsp;
               <meta itemprop="logo" content="http://cooperativares.it/img/logo-res.png">
               <meta itemprop="description" content="Ricerca Educativa Servizio Cooperativa Sociale. Servizi residenziali per persone disabili.">
               <br>
-              <a itemprop="url" href="http://cooperativares.it"><span style="display:block;"><strong
-                    itemprop="name">RES s.c.s.</strong></span></a> <span itemprop="address"
-                itemscope="" itemtype="http://schema.org/PostalAddress"> <span
-                  itemprop="streetAddress">via delle ginestre, 1</span><br>
+              <a itemprop="url" href="http://cooperativares.it"><span style="display:block;"><strong itemprop="name">RES s.c.s.</strong></span></a>
+              <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">via delle ginestre, 1</span><br>
                 <span itemprop="postalCode">10073</span> <span itemprop="addressLocality">CIRIE'</span>
                 <span itemprop="addressRegion">(TO)</span>
                 <meta itemprop="addressCountry" content="IT">
                 <meta name="viewport" content="width=device-width">
-              </span> <br>
+              </span><br>
               C.F. e P. IVA: 05845550010<br>
-              PEC: <a href="mailto:coopres@pec.confcooperative.it">coopres@pec.confcooperative.it</a>
-              <br>
+              PEC: <a href="mailto:coopres@pec.confcooperative.it">coopres@pec.confcooperative.it</a><br>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <script>
+      function enterSite() {
+        document.getElementById('splash').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    </script>
+
   </body>
 </html>
